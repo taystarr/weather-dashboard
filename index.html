@@ -9,27 +9,42 @@
     <link rel="stylesheet" href="./assets/style.css" />
     <title>Weather Dashboard</title>
 </head>
-<body>
+<body class="flex-column min-100-vh">
     <header class="hero">
         <h1 class="p-4 mb-3 bg-dark bg-gradient text-white text-center fs-1">Weather Dashboard</h1>
     </header>
     
-    <main class="flex-rox justify-space-between">
-        <div class="city-search col-12 col-md-3">
-            <div class="mb-3">
-                <form id="city-form" class="city-form align-items-center mx-4">
-                    <label for="city" class="form-label  h3"><strong>Search for a City:</strong></label>
-                    <input name="city" id="city" type="text" class="form-control  col-sm" placeholder="Las Vegas" />
-                    <div class="d-grid">
-                        <button type="button" class="btn btn-dark my-3 ">Search</button>
+    <div class="container">
+        <div class="row">
+            <div class="city-search col-12 col-md-3">
+                <div class="mb-3">
+                    <form id="city-form" class="city-form align-items-center">
+                        <label for="city" class="form-label h3"><strong>Search for a City:</strong></label>
+                        <input name="city" id="city" type="text" class="form-control col-sm" placeholder="Las Vegas" />
+                        <div class="search-button d-grid">
+                            <button type="button" class="btn btn-dark my-3">Search</button>
+                        </div>
+                    </form>
+                </div>
+                <div id="searched-cities" class="cities col-12 col-md-3">
+                    <div class="d-grid mx-4">
+                           
                     </div>
-                </form>
+                </div>
+            </div>
+            <!--container for searched cities-->
+
+            <!--container for todays weather-->
+            <div id="today-weather" class="today col-12 col-md-8 pt-4 mx-4">
+                
+            </div>
+
+            <!--container for five day forecast-->
+            <div id="future-weather" class="future col-12 col-md-8 pt-4 mx-4">
+                
             </div>
         </div>
-        <div class="cities col-12 col-md-3">
-            
-        </div>
-    </main>
+    </div>
 
     <script src="./assets/script.js"></script>
 </body>

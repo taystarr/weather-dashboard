@@ -1,3 +1,27 @@
 body {
     font-family: sans-serif;
 }
+
+.city-form {
+    border-bottom: solid 2px rgb(177, 177, 177);
+    margin-top: 20px;
+}
+
+.flex-row {
+    display: flex;
+    flex-wrap: wrap;
+}
+  
+  .flex-column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+  
+.search-button {
+    margin-bottom: 15px;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
