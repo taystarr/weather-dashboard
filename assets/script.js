@@ -64,12 +64,6 @@ var getCityWeather = function (city) {
             wind.classList = "fw-light fs-6 inline-block";
             cityName.append(wind);
 
-            console.log(searchedCity);
-            console.log(cityIcon);
-            console.log(cityTemp);
-            console.log(cityHumid);
-            console.log(cityWind);
-
             var lat = data.coord.lat;
             var lon = data.coord.lon;
 
@@ -88,7 +82,30 @@ var getCityWeather = function (city) {
                     cityName.append(uvIndex);
                 });
             });
-        
+
+            var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&units=imperial&appid=" + apiKey;
+            
+            fetch(forecastUrl).then(function(response) {
+                response.json().then(function(data) {
+                    console.log(data);
+
+                    for (var i = 5; i < data.list.length; i+=8) { 
+                    
+                    var forecastDate = moment(data.list[i].dt_txt).format("L");
+                    var forecastIcon = data.list[i].weather[0].icon;
+                    var forecastTemp = "Temperature: " + data.list[i].main.temp + "°F";
+                    var forecastHumid = "Humidity: " + data.list[i].main.humidity + "%";
+                    var forecastWind = "Wind Speed: " + data.list[i].wind.speed + "mph";
+
+                    console.log(forecastDate);
+                    console.log(forecastIcon);
+                    console.log(forecastTemp);
+                    console.log(forecastWind);
+                    console.log(forecastHumid);
+                    };
+
+                });
+            });
 
         });
     });
