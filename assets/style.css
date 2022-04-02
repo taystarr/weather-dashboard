@@ -12,7 +12,7 @@ body {
     flex-wrap: wrap;
 }
   
-  .flex-column {
+.flex-column {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;

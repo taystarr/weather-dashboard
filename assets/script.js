@@ -14,8 +14,8 @@ var cityFormHandler = function(event) {
     var clearHist = function () {
 
         //clear previous search
-    currentWeather.innerHTML = "";
-    futureWeather.innerHTML = "";
+        currentWeather.innerHTML = "";
+        futureWeather.innerHTML = "";
     }
     cityFormEl.addEventListener("submit", clearHist);
 
@@ -174,8 +174,6 @@ var getCityWeather = function (city) {
 
 var citiesButton = function(citiesButton){
  
-    // console.log(pastSearch)
-
     var cityButton = document.createElement("button");
     cityButton.textContent = citiesButton;
     cityButton.classList = "btn btn-dark my-3 rounded text-capitalize";
@@ -188,8 +186,8 @@ var citiesButton = function(citiesButton){
 var clearHist = function() {
 
     //clear previous search
-currentWeather.innerHTML = "";
-futureWeather.innerHTML = "";
+    currentWeather.innerHTML = "";
+    futureWeather.innerHTML = "";
 }
 
 var pastSearchHandler = function(event){
