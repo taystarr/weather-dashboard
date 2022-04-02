@@ -28,8 +28,7 @@ var cityFormHandler = function(event) {
         alert("Please try again");
     }
     console.log(event);
-
-    citiesButton(city)
+    citiesButton(city);
 };
 
 var getCityWeather = function (city) {
@@ -37,7 +36,7 @@ var getCityWeather = function (city) {
     
     fetch(cityUrl).then(function(response) {
         response.json().then(function(data) {
-            console.log(data);
+            if (response.ok) {
 
             var searchedCity = data.name;
             var cityIcon = data.weather[0].icon;
@@ -157,19 +156,41 @@ var getCityWeather = function (city) {
 
                 });
             });
-
+        } else { 
+            alert("Please try another city");
+        }
         });
     });
 };
 
-var citiesButton = function(city) {
+var citiesButton = function(citiesButton){
+ 
+    // console.log(pastSearch)
 
     var cityButton = document.createElement("button");
+    cityButton.textContent = citiesButton;
     cityButton.classList = "btn btn-dark my-3 rounded text-capitalize";
-    cityButton.setAttribute("type", "button");
-    cityButton.textContent = city;
+    cityButton.setAttribute("data-city", citiesButton);
+    cityButton.setAttribute("type", "submit");
 
-    searchedCities.append(cityButton);
+    searchedCities.prepend(cityButton);
 }
 
+var clearHist = function() {
+
+    //clear previous search
+currentWeather.innerHTML = "";
+futureWeather.innerHTML = "";
+}
+
+var pastSearchHandler = function(event){
+    var city = event.target.getAttribute("data-city")
+    if(city){
+        
+        clearHist();
+        getCityWeather(city);
+    }
+};
+
 cityFormEl.addEventListener("submit", cityFormHandler);
+searchedCities.addEventListener("click", pastSearchHandler);
