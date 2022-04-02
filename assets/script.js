@@ -83,13 +83,22 @@ var getCityWeather = function (city) {
                 response.json().then(function(data) {
                     console.log(data);
 
-                    var cityUv = "UV Index: " + data.current.uvi;
+                    var cityUv = data.current.uvi;
 
                     //UV Index
                     var uvIndex = document.createElement("p");
-                    uvIndex.textContent = cityUv;
+                    uvIndex.textContent = "UV Index: " + cityUv;
                     uvIndex.classList = "fw-light fs-6 inline-block";
                     cityName.append(uvIndex);
+
+
+                    if (data.current.uvi < 2) {
+                        uvIndex.classList = "fw-light fs-6 bg-success";
+                    } else if (data.current.uvi > 2 && data.current.uvi < 5) {
+                        uvIndex.classList = "fw-light fs-6 bg-warning px-2 py-1";
+                    } else if (data.current.uvi > 5) {
+                        uvIndex.classList = "fw-light fs-6 bg-danger px-2 py-1";
+                    };
                 });
             });
 
